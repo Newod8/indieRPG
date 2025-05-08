@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://busbvs1bj0tap"]
+
+[ext_resource type="Texture2D" uid="uid://ba7l65qbcenaa" path="res://Assets/Backgrounds/Placeholder.png" id="1_b25br"]
+[ext_resource type="Texture2D" uid="uid://br68ljepqd7tk" path="res://Assets/Characters/ghost_sprite.png" id="2_hdvqd"]
+[ext_resource type="Texture2D" uid="uid://bg1xvj8gf1po" path="res://Assets/Characters/explorer_sprite.png" id="3_anwxn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anwxn"]
+atlas = ExtResource("2_hdvqd")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5vbs"]
+atlas = ExtResource("2_hdvqd")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3gnqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anwxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5vbs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gnqe"]
+atlas = ExtResource("3_anwxn")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt16y"]
+atlas = ExtResource("3_anwxn")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_20f6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gnqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt16y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.5
+}]
+
+[node name="BattleScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BattleManager" type="Node" parent="."]
+
+[node name="PlayerTeam" type="Node" parent="."]
+
+[node name="Player1" type="AnimatedSprite2D" parent="PlayerTeam"]
+position = Vector2(244, 173)
+scale = Vector2(11.75, 11.25)
+sprite_frames = SubResource("SpriteFrames_3gnqe")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.788815
+
+[node name="EnemyTeam" type="Node" parent="."]
+
+[node name="Enemy1" type="AnimatedSprite2D" parent="EnemyTeam"]
+position = Vector2(922, 190)
+scale = Vector2(15.03, 15.03)
+sprite_frames = SubResource("SpriteFrames_20f6w")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.567742
+flip_h = true
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_b25br")
+expand_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 146.0
+offset_right = 74.0
+offset_bottom = -154.0
+grow_vertical = 2
